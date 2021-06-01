@@ -8,9 +8,11 @@ import {
 import BlogHeader from "./components/header/BlogHeader";
 import BlogFooter from "./components/footer/BlogFooter";
 import HomeComponent from "./components/home/HomeComponent";
+import { useState } from 'react';
 
 function App() {
 
+  const [isSignedIn, setSignIn] = useState(false);
 
   return (
     <div id="root">
@@ -18,7 +20,7 @@ function App() {
         <BlogHeader></BlogHeader>
         <Switch>
           <Route>
-            <HomeComponent/>
+            <HomeComponent isSignedIn={isSignedIn}/>
           </Route>
         </Switch>
         <BlogFooter></BlogFooter>
