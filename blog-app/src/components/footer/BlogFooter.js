@@ -1,8 +1,9 @@
 import React from "react";
+import "./BlogFooter.css";
 
 function BlogFooter() {
     return (
-        <div>
+        <div className="footer-wrapper">
             footer
         </div>
     )

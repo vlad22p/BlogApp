@@ -8,11 +8,25 @@ import {
 import BlogHeader from "./components/header/BlogHeader";
 import BlogFooter from "./components/footer/BlogFooter";
 import HomeComponent from "./components/home/HomeComponent";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function App() {
 
   const [isSignedIn, setSignIn] = useState(false);
+
+
+  const getAllPosts = () => {
+    fetch(
+      "https://www.googleapis.com/blogger/v3/blogs/1619808215032981870/posts?key=AIzaSyDnd0083ibcmEQ445IZnVgONShVol8ezaQ&pageToken=CgkIChiD6J3Lmi8Q7tKz6tTfrb0W", {
+      method: "GET"
+    }
+    ).then(response => response.json()
+    ).then((result) => {
+      console.log(result);
+    })
+  }
+
+  useEffect(getAllPosts);
 
   return (
     <div id="root">
@@ -20,7 +34,7 @@ function App() {
         <BlogHeader></BlogHeader>
         <Switch>
           <Route>
-            <HomeComponent isSignedIn={isSignedIn}/>
+            <HomeComponent isSignedIn={isSignedIn} />
           </Route>
         </Switch>
         <BlogFooter></BlogFooter>
