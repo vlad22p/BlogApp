@@ -5,6 +5,7 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
+import Loader from "./components/home/Loader/Loader";
 import BlogHeader from "./components/header/BlogHeader";
 import BlogFooter from "./components/footer/BlogFooter";
 import HomeComponent from "./components/home/HomeComponent";
@@ -13,6 +14,7 @@ import { useEffect, useState } from 'react';
 function App() {
 
   const [isSignedIn, setSignIn] = useState(false);
+  const [isLoading, setLoader] = useState(true);
 
 
   const getAllPosts = () => {
@@ -23,24 +25,31 @@ function App() {
     ).then(response => response.json()
     ).then((result) => {
       console.log(result);
+      setLoader(false);
     })
   }
 
   useEffect(getAllPosts);
 
-  return (
-    <div id="root">
-      <BrowserRouter>
-        <BlogHeader></BlogHeader>
-        <Switch>
-          <Route>
-            <HomeComponent isSignedIn={isSignedIn} />
-          </Route>
-        </Switch>
-        <BlogFooter></BlogFooter>
-      </BrowserRouter>
-    </div>
-  )
+  if(!isLoading) {
+    return (
+      <div id="root">
+        <BrowserRouter>
+          <BlogHeader></BlogHeader>
+          <Switch>
+            <Route>
+              <HomeComponent isSignedIn={isSignedIn} />
+            </Route>
+          </Switch>
+          <BlogFooter></BlogFooter>
+        </BrowserRouter>
+      </div>
+    )
+  } else {
+    return (
+      <Loader></Loader>
+    )
+  }
 }
 
 export default App;
