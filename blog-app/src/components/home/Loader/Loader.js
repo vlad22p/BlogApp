@@ -4,7 +4,7 @@ import "./Loader.css";
 function Loader() {
     return (
         <div className="loader">
-            <img src={blogLogo}></img>
+            <img src={blogLogo} alt="Blog Project"></img>
         </div>
     )
 }

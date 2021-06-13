@@ -3,7 +3,7 @@ import LogoutGraphic from "./nav options svg/LogoutGraphic";
 import "./NavOption.css";
 
 function AuthenticationOption(props) {
-    if (props.isSignedIn==false) {
+    if (props.isSignedIn===false) {
         return (
             <div className="login-option home-option">
                 <div className="option-title">

@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+import {
+    Link,
+    withRouter
+} from "react-router-dom";
 import PostPreview from "../PostPreview";
 import NavOption from "./nav options/NavOption";
 import AuthenticationOption from "./nav options/AuthenticationOption";
@@ -14,7 +18,9 @@ function HomeComponent(props) {
             </div>
             <nav className="home-right-wrapper">
                 <div className="flex-column">
-                    <NavOption title="All posts" />
+                    <Link to="/posts">
+                        <NavOption title="All posts" />
+                    </Link>
                     <NavOption title="Search" />
                 </div>
                 <div className="flex-column">
@@ -26,4 +32,4 @@ function HomeComponent(props) {
     )
 }
 
-export default HomeComponent;
+export default withRouter(HomeComponent);

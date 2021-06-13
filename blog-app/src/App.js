@@ -4,11 +4,13 @@ import {
   BrowserRouter,
   Switch,
   Route,
+  Link
 } from "react-router-dom";
 import Loader from "./components/home/Loader/Loader";
 import BlogHeader from "./components/header/BlogHeader";
 import BlogFooter from "./components/footer/BlogFooter";
 import HomeComponent from "./components/home/HomeComponent";
+import PostsComponent from "./components/posts/PostsComponent";
 import { useEffect, useState } from 'react';
 
 function App() {
@@ -18,8 +20,8 @@ function App() {
   const [postItems, setPostItems] = useState([]);
   const getPostsUrl = new URL("https://www.googleapis.com/blogger/v3/blogs/1619808215032981870/posts")
   const myKey = "AIzaSyDnd0083ibcmEQ445IZnVgONShVol8ezaQ";
-  
-  
+
+
   function getAllPosts() {
     getPostsUrl.searchParams.set("key", myKey);
     getPostsUrl.searchParams.set("maxResults", 500);
@@ -34,11 +36,11 @@ function App() {
       setLoader(false);
     })
   }
-  
+
   function sliceItems(array) {
     const sliced = [];
-    for (let i = 0; i<array.length; i += 10) {
-      let temporary = array.slice(i, i+10);
+    for (let i = 0; i < array.length; i += 10) {
+      let temporary = array.slice(i, i + 10);
       sliced.push(temporary);
     }
     console.log(sliced);
@@ -52,7 +54,10 @@ function App() {
         <BrowserRouter>
           <BlogHeader></BlogHeader>
           <Switch>
-            <Route>
+            <Route path="/posts">
+              <PostsComponent />
+            </Route>
+            <Route path="/">
               <HomeComponent sliceItems={sliceItems} postItems={postItems} isSignedIn={isSignedIn} />
             </Route>
           </Switch>

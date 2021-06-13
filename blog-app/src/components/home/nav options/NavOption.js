@@ -4,7 +4,7 @@ import AllPostsGraphic from "./nav options svg/AllPostsGraphic";
 import AboutGraphic from "./nav options svg/AboutGraphic";
 
 function NavOption(props) {
-    if (props.title == "All posts") {
+    if (props.title === "All posts") {
         return (
             <div className="home-option">
                 <div className="option-title">
@@ -15,7 +15,7 @@ function NavOption(props) {
                 </div>
             </div>
         )
-    } else if (props.title == "Search") {
+    } else if (props.title === "Search") {
         return (
             <div className="home-option">
                 <div className="option-title">
@@ -26,7 +26,7 @@ function NavOption(props) {
                 </div>
             </div>
         )
-    } else if (props.title == "About") {
+    } else if (props.title === "About") {
         return (
             <div className="home-option">
                 <div className="option-title">
