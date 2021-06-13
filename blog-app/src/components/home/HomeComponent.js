@@ -1,8 +1,5 @@
 import React, { useState } from "react";
-import {
-    Link,
-    withRouter
-} from "react-router-dom";
+import { Link } from "react-router-dom";
 import PostPreview from "../PostPreview";
 import NavOption from "./nav options/NavOption";
 import AuthenticationOption from "./nav options/AuthenticationOption";
@@ -32,4 +29,4 @@ function HomeComponent(props) {
     )
 }
 
-export default withRouter(HomeComponent);
+export default HomeComponent;

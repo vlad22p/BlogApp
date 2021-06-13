@@ -1,5 +1,4 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
 
 function PostsComponent() {
     return (
@@ -7,4 +6,4 @@ function PostsComponent() {
     )
 }
 
-export default withRouter(PostsComponent);
+export default PostsComponent;
