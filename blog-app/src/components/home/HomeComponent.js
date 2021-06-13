@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import PostPreview from "../PostPreview";
+import NavOption from "./nav options/NavOption";
+import AuthenticationOption from "./nav options/AuthenticationOption";
 import "./HomeComponent.css";
+
 
 function HomeComponent(props) {
 
@@ -9,16 +12,16 @@ function HomeComponent(props) {
             <div className="home-left-wrapper">
                 <PostPreview></PostPreview>
             </div>
-            <div className="home-right-wrapper">
+            <nav className="home-right-wrapper">
                 <div className="flex-column">
-                    <div className="home-option">all posts option</div>
-                    <div className="home-option">search posts option</div>
+                    <NavOption title="All posts" />
+                    <NavOption title="Search" />
                 </div>
                 <div className="flex-column">
-                    <div className="home-option">more/about option</div>
-                    <div className="home-option">authentication opton</div>
+                    <NavOption title="About" />
+                    <AuthenticationOption isSignedIn={props.isSignedIn} />
                 </div>
-            </div>
+            </nav>
         </div>
     )
 }
