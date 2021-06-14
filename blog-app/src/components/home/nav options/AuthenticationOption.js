@@ -4,12 +4,12 @@ import LogoutGraphic from "./nav options svg/LogoutGraphic";
 import "./NavOption.css";
 
 function AuthenticationOption(props) {
-    
+
     function logout() {
         localStorage.removeItem("accessToken");
         props.setSignIn(false);
     }
-    
+
     if (props.isSignedIn === false) {
         return (
             <Link to="/login">

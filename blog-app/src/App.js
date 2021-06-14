@@ -18,9 +18,9 @@ function App() {
   const [isSignedIn, setSignIn] = useState(false);
   const [isLoading, setLoader] = useState(true);
   const [postItems, setPostItems] = useState([]);
-  const getPostsUrl = new URL("https://www.googleapis.com/blogger/v3/blogs/1619808215032981870/posts")
+  const myBlogId = "1619808215032981870";
   const myKey = "AIzaSyDnd0083ibcmEQ445IZnVgONShVol8ezaQ";
-
+  const getPostsUrl = new URL("https://www.googleapis.com/blogger/v3/blogs/" + myBlogId + "/posts")
 
   function getAllPosts() {
     getPostsUrl.searchParams.set("key", myKey);
