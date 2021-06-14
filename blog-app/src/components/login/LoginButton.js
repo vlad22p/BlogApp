@@ -1,10 +1,20 @@
 import React from "react";
 import { GoogleLogin } from "react-google-login";
+import { useHistory } from "react-router-dom";
 
-function LoginButton() {
+function LoginButton(props) {
+    
+    let history = useHistory();
+
     const responseSuccess = (response) => {
-        console.log(response.accessToken);
-        saveToken(response.accessToken);
+        console.log(response);
+        if (response.profileObj.email==="vladpopdev@gmail.com") {
+            saveToken(response.tokenObj.access_token);
+            props.setSignIn(true);
+            history.push("/");
+        } else {
+            props.setWrongUser(true);
+        }
     }
 
     const responseFailure = () => {
@@ -14,6 +24,8 @@ function LoginButton() {
     const saveToken = (token) => {
         localStorage.setItem("accessToken", token);
     }
+
+   
 
     return (
         <div>

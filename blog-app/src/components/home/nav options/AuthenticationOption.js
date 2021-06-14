@@ -1,9 +1,15 @@
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import LoginGraphic from "./nav options svg/LoginGraphic";
 import LogoutGraphic from "./nav options svg/LogoutGraphic";
 import "./NavOption.css";
 
 function AuthenticationOption(props) {
+    
+    function logout() {
+        localStorage.removeItem("accessToken");
+        props.setSignIn(false);
+    }
+    
     if (props.isSignedIn === false) {
         return (
             <Link to="/login">
@@ -19,7 +25,7 @@ function AuthenticationOption(props) {
         )
     } else {
         return (
-            <div className="logout-option home-option">
+            <div className="logout-option home-option" onClick={logout}>
                 <div className="option-title">
                     Log out
                 </div>

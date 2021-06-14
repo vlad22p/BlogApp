@@ -22,7 +22,7 @@ function HomeComponent(props) {
                 </div>
                 <div className="flex-column">
                     <NavOption title="About" />
-                    <AuthenticationOption isSignedIn={props.isSignedIn} />
+                    <AuthenticationOption isSignedIn={props.isSignedIn} setSignIn={props.setSignIn} />
                 </div>
             </nav>
         </div>

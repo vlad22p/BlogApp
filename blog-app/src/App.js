@@ -1,5 +1,4 @@
 import './App.css';
-import LoginButton from "./components/LoginButton";
 import {
   BrowserRouter,
   Switch,
@@ -39,6 +38,12 @@ function App() {
     )
   }
 
+  function checkLogin() {
+    if (localStorage.getItem("accessToken")) {
+      setSignIn(true);
+    }
+  }
+
   function sliceItems(array) {
     const sliced = [];
     for (let i = 0; i < array.length; i += 10) {
@@ -49,6 +54,7 @@ function App() {
   }
 
   useEffect(getAllPosts, []);
+  useEffect(checkLogin);
 
   if (!isLoading) {
     return (
@@ -60,10 +66,10 @@ function App() {
               <PostsComponent />
             </Route>
             <Route path="/login">
-              <LoginComponent />
+              <LoginComponent setSignIn={setSignIn} />
             </Route>
             <Route path="/">
-              <HomeComponent sliceItems={sliceItems} postItems={postItems} isSignedIn={isSignedIn} />
+              <HomeComponent sliceItems={sliceItems} postItems={postItems} isSignedIn={isSignedIn} setSignIn={setSignIn} />
             </Route>
           </Switch>
           <BlogFooter></BlogFooter>
