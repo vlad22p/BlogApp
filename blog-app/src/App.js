@@ -11,6 +11,7 @@ import BlogHeader from "./components/header/BlogHeader";
 import BlogFooter from "./components/footer/BlogFooter";
 import HomeComponent from "./components/home/HomeComponent";
 import PostsComponent from "./components/posts/PostsComponent";
+import LoginComponent from "./components/login/LoginComponent";
 import { useEffect, useState } from 'react';
 
 function App() {
@@ -33,8 +34,9 @@ function App() {
     ).then((result) => {
       console.log(result)
       setPostItems(result.items);
-      setLoader(false);
-    })
+    }).finally(
+      setLoader(false)
+    )
   }
 
   function sliceItems(array) {
@@ -56,6 +58,9 @@ function App() {
           <Switch>
             <Route path="/posts">
               <PostsComponent />
+            </Route>
+            <Route path="/login">
+              <LoginComponent />
             </Route>
             <Route path="/">
               <HomeComponent sliceItems={sliceItems} postItems={postItems} isSignedIn={isSignedIn} />

@@ -6,7 +6,7 @@ import AboutGraphic from "./nav options svg/AboutGraphic";
 function NavOption(props) {
     if (props.title === "All posts") {
         return (
-            <div className="home-option">
+            <div className="home-option posts-option">
                 <div className="option-title">
                     {props.title}
                 </div>
