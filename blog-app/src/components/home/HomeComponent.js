@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import PostPreview from "../PostPreview";
+import PostPreview from "../posts/PostPreview";
 import NavOption from "./nav options/NavOption";
 import AuthenticationOption from "./nav options/AuthenticationOption";
 import "./HomeComponent.css";

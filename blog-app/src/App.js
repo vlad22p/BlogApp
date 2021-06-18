@@ -13,18 +13,19 @@ import PostsComponent from "./components/posts/PostsComponent";
 import LoginComponent from "./components/login/LoginComponent";
 import { useEffect, useState } from 'react';
 
+export const myBlogId = "1619808215032981870";
+export const myKey = "AIzaSyDnd0083ibcmEQ445IZnVgONShVol8ezaQ";
+export const getPostsUrl = new URL("https://www.googleapis.com/blogger/v3/blogs/" + myBlogId + "/posts")
+
 function App() {
 
   const [isSignedIn, setSignIn] = useState(false);
   const [isLoading, setLoader] = useState(true);
   const [postItems, setPostItems] = useState([]);
-  const myBlogId = "1619808215032981870";
-  const myKey = "AIzaSyDnd0083ibcmEQ445IZnVgONShVol8ezaQ";
-  const getPostsUrl = new URL("https://www.googleapis.com/blogger/v3/blogs/" + myBlogId + "/posts")
 
-  function getAllPosts() {
+  function getRecentPosts() {
     getPostsUrl.searchParams.set("key", myKey);
-    getPostsUrl.searchParams.set("maxResults", 500);
+    getPostsUrl.searchParams.set("maxResults", 5);
     fetch(
       getPostsUrl, {
       method: "GET"
@@ -44,17 +45,8 @@ function App() {
     }
   }
 
-  function sliceItems(array) {
-    const sliced = [];
-    for (let i = 0; i < array.length; i += 10) {
-      let temporary = array.slice(i, i + 10);
-      sliced.push(temporary);
-    }
-    console.log(sliced);
-  }
-
-  useEffect(getAllPosts, []);
   useEffect(checkLogin);
+  useEffect(getRecentPosts, [])
 
   if (!isLoading) {
     return (
@@ -69,7 +61,7 @@ function App() {
               <LoginComponent setSignIn={setSignIn} />
             </Route>
             <Route path="/">
-              <HomeComponent sliceItems={sliceItems} postItems={postItems} isSignedIn={isSignedIn} setSignIn={setSignIn} />
+              <HomeComponent postItems={postItems} isSignedIn={isSignedIn} setSignIn={setSignIn} />
             </Route>
           </Switch>
           <BlogFooter></BlogFooter>
