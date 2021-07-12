@@ -3,7 +3,7 @@ import PostPreview from "./PostPreview";
 function DisplayedPostList(props) {
     
     function renderPosts(postsArray) {
-        return postsArray.map((element) => <PostPreview post={element} /> )
+        return postsArray.map((element) => <PostPreview key={element.id} post={element} /> )
     }
 
     return (

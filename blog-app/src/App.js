@@ -10,6 +10,7 @@ import BlogHeader from "./components/header/BlogHeader";
 import BlogFooter from "./components/footer/BlogFooter";
 import HomeComponent from "./components/home/HomeComponent";
 import PostsComponent from "./components/posts/PostsComponent";
+import FullPost from "./components/posts/FullPost";
 import LoginComponent from "./components/login/LoginComponent";
 import { useEffect, useState } from 'react';
 
@@ -54,6 +55,9 @@ function App() {
         <BrowserRouter>
           <BlogHeader></BlogHeader>
           <Switch>
+            <Route path="/posts/:id">
+              <FullPost></FullPost>
+            </Route>
             <Route path="/posts">
               <PostsComponent />
             </Route>
