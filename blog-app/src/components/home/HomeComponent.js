@@ -11,7 +11,7 @@ function HomeComponent(props) {
     return (
         <div className="home-main-wrapper">
             <div className="home-left-wrapper">
-                <PostPreview></PostPreview>
+                post preview
             </div>
             <nav className="home-right-wrapper">
                 <div className="flex-column">

@@ -1,6 +1,9 @@
-function PostPreview() {
+function PostPreview(props) {
     return (
-        <div>here will be the post preview</div>
+        <div>
+            <h1>{props.post.title}</h1>
+            <h3>post preview component</h3>
+        </div>
     )
 }
 
